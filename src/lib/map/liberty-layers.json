@@ -1,0 +1,448 @@
+{
+"layers": [
+{
+"id": "background",
+"type": "background"
+},
+{
+"id": "natural_earth",
+"type": "raster"
+},
+{
+"id": "park",
+"type": "fill"
+},
+{
+"id": "park_outline",
+"type": "line"
+},
+{
+"id": "landuse_residential",
+"type": "fill"
+},
+{
+"id": "landcover_wood",
+"type": "fill"
+},
+{
+"id": "landcover_grass",
+"type": "fill"
+},
+{
+"id": "landcover_ice",
+"type": "fill"
+},
+{
+"id": "landcover_wetland",
+"type": "fill"
+},
+{
+"id": "landuse_pitch",
+"type": "fill"
+},
+{
+"id": "landuse_track",
+"type": "fill"
+},
+{
+"id": "landuse_cemetery",
+"type": "fill"
+},
+{
+"id": "landuse_hospital",
+"type": "fill"
+},
+{
+"id": "landuse_school",
+"type": "fill"
+},
+{
+"id": "waterway_tunnel",
+"type": "line"
+},
+{
+"id": "waterway_river",
+"type": "line"
+},
+{
+"id": "waterway_other",
+"type": "line"
+},
+{
+"id": "water",
+"type": "fill"
+},
+{
+"id": "landcover_sand",
+"type": "fill"
+},
+{
+"id": "aeroway_fill",
+"type": "fill"
+},
+{
+"id": "aeroway_runway",
+"type": "line"
+},
+{
+"id": "aeroway_taxiway",
+"type": "line"
+},
+{
+"id": "tunnel_motorway_link_casing",
+"type": "line"
+},
+{
+"id": "tunnel_service_track_casing",
+"type": "line"
+},
+{
+"id": "tunnel_link_casing",
+"type": "line"
+},
+{
+"id": "tunnel_street_casing",
+"type": "line"
+},
+{
+"id": "tunnel_secondary_tertiary_casing",
+"type": "line"
+},
+{
+"id": "tunnel_trunk_primary_casing",
+"type": "line"
+},
+{
+"id": "tunnel_motorway_casing",
+"type": "line"
+},
+{
+"id": "tunnel_path_pedestrian",
+"type": "line"
+},
+{
+"id": "tunnel_motorway_link",
+"type": "line"
+},
+{
+"id": "tunnel_service_track",
+"type": "line"
+},
+{
+"id": "tunnel_link",
+"type": "line"
+},
+{
+"id": "tunnel_minor",
+"type": "line"
+},
+{
+"id": "tunnel_secondary_tertiary",
+"type": "line"
+},
+{
+"id": "tunnel_trunk_primary",
+"type": "line"
+},
+{
+"id": "tunnel_motorway",
+"type": "line"
+},
+{
+"id": "tunnel_major_rail",
+"type": "line"
+},
+{
+"id": "tunnel_major_rail_hatching",
+"type": "line"
+},
+{
+"id": "tunnel_transit_rail",
+"type": "line"
+},
+{
+"id": "tunnel_transit_rail_hatching",
+"type": "line"
+},
+{
+"id": "road_area_pattern",
+"type": "fill"
+},
+{
+"id": "road_motorway_link_casing",
+"type": "line"
+},
+{
+"id": "road_service_track_casing",
+"type": "line"
+},
+{
+"id": "road_link_casing",
+"type": "line"
+},
+{
+"id": "road_minor_casing",
+"type": "line"
+},
+{
+"id": "road_secondary_tertiary_casing",
+"type": "line"
+},
+{
+"id": "road_trunk_primary_casing",
+"type": "line"
+},
+{
+"id": "road_motorway_casing",
+"type": "line"
+},
+{
+"id": "road_path_pedestrian",
+"type": "line"
+},
+{
+"id": "road_motorway_link",
+"type": "line"
+},
+{
+"id": "road_service_track",
+"type": "line"
+},
+{
+"id": "road_link",
+"type": "line"
+},
+{
+"id": "road_minor",
+"type": "line"
+},
+{
+"id": "road_secondary_tertiary",
+"type": "line"
+},
+{
+"id": "road_trunk_primary",
+"type": "line"
+},
+{
+"id": "road_motorway",
+"type": "line"
+},
+{
+"id": "road_major_rail",
+"type": "line"
+},
+{
+"id": "road_major_rail_hatching",
+"type": "line"
+},
+{
+"id": "road_transit_rail",
+"type": "line"
+},
+{
+"id": "road_transit_rail_hatching",
+"type": "line"
+},
+{
+"id": "road_one_way_arrow",
+"type": "symbol"
+},
+{
+"id": "road_one_way_arrow_opposite",
+"type": "symbol"
+},
+{
+"id": "bridge_motorway_link_casing",
+"type": "line"
+},
+{
+"id": "bridge_service_track_casing",
+"type": "line"
+},
+{
+"id": "bridge_link_casing",
+"type": "line"
+},
+{
+"id": "bridge_street_casing",
+"type": "line"
+},
+{
+"id": "bridge_path_pedestrian_casing",
+"type": "line"
+},
+{
+"id": "bridge_secondary_tertiary_casing",
+"type": "line"
+},
+{
+"id": "bridge_trunk_primary_casing",
+"type": "line"
+},
+{
+"id": "bridge_motorway_casing",
+"type": "line"
+},
+{
+"id": "bridge_path_pedestrian",
+"type": "line"
+},
+{
+"id": "bridge_motorway_link",
+"type": "line"
+},
+{
+"id": "bridge_service_track",
+"type": "line"
+},
+{
+"id": "bridge_link",
+"type": "line"
+},
+{
+"id": "bridge_street",
+"type": "line"
+},
+{
+"id": "bridge_secondary_tertiary",
+"type": "line"
+},
+{
+"id": "bridge_trunk_primary",
+"type": "line"
+},
+{
+"id": "bridge_motorway",
+"type": "line"
+},
+{
+"id": "bridge_major_rail",
+"type": "line"
+},
+{
+"id": "bridge_major_rail_hatching",
+"type": "line"
+},
+{
+"id": "bridge_transit_rail",
+"type": "line"
+},
+{
+"id": "bridge_transit_rail_hatching",
+"type": "line"
+},
+{
+"id": "building",
+"type": "fill"
+},
+{
+"id": "building-3d",
+"type": "fill-extrusion"
+},
+{
+"id": "boundary_3",
+"type": "line"
+},
+{
+"id": "boundary_2",
+"type": "line"
+},
+{
+"id": "boundary_disputed",
+"type": "line"
+},
+{
+"id": "waterway_line_label",
+"type": "symbol"
+},
+{
+"id": "water_name_point_label",
+"type": "symbol"
+},
+{
+"id": "water_name_line_label",
+"type": "symbol"
+},
+{
+"id": "poi_r20",
+"type": "symbol"
+},
+{
+"id": "poi_r7",
+"type": "symbol"
+},
+{
+"id": "poi_r1",
+"type": "symbol"
+},
+{
+"id": "poi_transit",
+"type": "symbol"
+},
+{
+"id": "highway-name-path",
+"type": "symbol"
+},
+{
+"id": "highway-name-minor",
+"type": "symbol"
+},
+{
+"id": "highway-name-major",
+"type": "symbol"
+},
+{
+"id": "highway-shield-non-us",
+"type": "symbol"
+},
+{
+"id": "highway-shield-us-interstate",
+"type": "symbol"
+},
+{
+"id": "road_shield_us",
+"type": "symbol"
+},
+{
+"id": "airport",
+"type": "symbol"
+},
+{
+"id": "label_other",
+"type": "symbol"
+},
+{
+"id": "label_village",
+"type": "symbol"
+},
+{
+"id": "label_town",
+"type": "symbol"
+},
+{
+"id": "label_state",
+"type": "symbol"
+},
+{
+"id": "label_city",
+"type": "symbol"
+},
+{
+"id": "label_city_capital",
+"type": "symbol"
+},
+{
+"id": "label_country_3",
+"type": "symbol"
+},
+{
+"id": "label_country_2",
+"type": "symbol"
+},
+{
+"id": "label_country_1",
+"type": "symbol"
+}
+]
+}

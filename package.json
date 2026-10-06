@@ -1,0 +1,33 @@
+{
+  "name": "ev-charger-jev",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Find me a charging stop. Code does the arithmetic, Jev judges the prose.",
+  "scripts": {
+    "dev": "next dev --port 3100",
+    "build": "next build",
+    "start": "next start --port 3100",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "snapshot": "tsx src/experiments/snapshot.ts",
+    "coverage": "tsx src/experiments/coverage.ts"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0",
+    "dotenv": "^16.4.5",
+    "maplibre-gl": "^5.9.0",
+    "next": "^16.3.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.0"
+  }
+}

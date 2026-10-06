@@ -1,0 +1,404 @@
+/*
+ * Palette supplied by the author, as space-separated RGB so opacity can be varied with
+ * `rgb(var(--x) / 0.4)` without defining a second colour for every tint.
+ *
+ * The scheme is warm and light, which is a deliberate contrast with the subject: an app about
+ * running out of charge at night could easily be all dark panels and red warnings, and that reads as
+ * an alarm rather than something you would use. Beige ground, navy text, coral for the things that
+ * need attention.
+ */
+:root {
+  --color-primary: 238 95 83;              /* #ee5f53 */
+  --color-primary-light: 241 145 139;      /* #f1918b */
+  --color-code-inline-blue: 41 90 146;     /* #295a92 */
+  --color-secondary: 23 51 83;             /* #173353 */
+  --color-secondary-light: 55 80 110;      /* #37506e */
+  --color-green-light: 0 221 130;          /* #00dd82 */
+  --color-green-blue: 191 217 219;         /* #bfd9db */
+  --color-green: 64 151 157;               /* #40979d */
+  --color-beige: 216 215 193;              /* #d8d7c1 */
+  --color-beige-light: 239 232 223;        /* #efe8df */
+  --color-beige-gray: 155 155 155;         /* #9b9b9b */
+  --color-gray: 109 110 113;               /* #6d6e71 */
+  --color-gray-secondary: 116 134 155;     /* #74869b */
+
+  --ink: rgb(var(--color-secondary));
+  --ink-soft: rgb(var(--color-secondary-light));
+  --ink-faint: rgb(var(--color-gray-secondary));
+  --ground: rgb(var(--color-beige-light));
+  --card: #fffdfa;
+  --edge: rgb(var(--color-beige));
+
+  --radius: 14px;
+  --shadow: 0 2px 0 rgb(var(--color-beige)), 0 6px 18px rgb(var(--color-secondary) / 0.07);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 15px/1.55 ui-rounded, "SF Pro Rounded", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { display: grid; grid-template-columns: minmax(400px, 480px) 1fr; height: 100vh; }
+@media (max-width: 900px) {
+  .wrap { grid-template-columns: 1fr; grid-template-rows: auto 60vh; height: auto; }
+}
+
+.side {
+  overflow-y: auto;
+  padding: 22px 22px 40px;
+  background: var(--ground);
+  border-right: 2px solid var(--edge);
+}
+
+/* ── header ─────────────────────────────────────────────────────────────────────────────── */
+
+.brand { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 12px;
+  background: rgb(var(--color-primary));
+  display: grid; place-items: center;
+  font-size: 20px; line-height: 1;
+  box-shadow: 0 3px 0 rgb(var(--color-primary) / 0.35);
+  /* A slow wobble. Small enough to notice only if you look, which is the right amount. */
+  animation: wobble 6s ease-in-out infinite;
+}
+@keyframes wobble {
+  0%, 92%, 100% { transform: rotate(-3deg); }
+  95% { transform: rotate(4deg) scale(1.06); }
+}
+h1 { font-size: 21px; margin: 0; letter-spacing: -0.02em; font-weight: 700; }
+.sub { color: var(--ink-soft); font-size: 13px; margin: 6px 0 18px; }
+
+/* ── form ───────────────────────────────────────────────────────────────────────────────── */
+
+form { display: grid; gap: 12px; margin-bottom: 18px; }
+
+textarea, input, select {
+  width: 100%;
+  background: var(--card);
+  color: var(--ink);
+  border: 2px solid var(--edge);
+  border-radius: var(--radius);
+  padding: 11px 13px;
+  font: inherit;
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+textarea:focus, input:focus, select:focus {
+  outline: none;
+  border-color: rgb(var(--color-green));
+  box-shadow: 0 0 0 4px rgb(var(--color-green) / 0.14);
+}
+select { appearance: none; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, rgb(var(--color-secondary-light)) 50%),
+                    linear-gradient(135deg, rgb(var(--color-secondary-light)) 50%, transparent 50%);
+  background-position: calc(100% - 17px) 19px, calc(100% - 12px) 19px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 32px;
+}
+
+.row  { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 9px; align-items: end; }
+.row2 { display: grid; grid-template-columns: 1fr auto 1fr; gap: 9px; align-items: end; }
+.arrow { padding-bottom: 12px; color: rgb(var(--color-primary)); font-size: 17px; font-weight: 700; }
+
+label { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--ink-faint); display: block; margin-bottom: 5px; }
+
+button {
+  background: rgb(var(--color-primary));
+  color: #fff;
+  border: 0;
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font: 700 15px/1 inherit;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgb(var(--color-primary) / 0.4);
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 0 rgb(var(--color-primary) / 0.4); }
+button:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 rgb(var(--color-primary) / 0.4); }
+button:disabled { opacity: 0.6; cursor: progress; box-shadow: none; }
+
+/* ── the two panels ─────────────────────────────────────────────────────────────────────── */
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 18px; }
+.half { border-radius: var(--radius); padding: 12px 14px; border: 2px solid transparent; }
+.half.code { background: rgb(var(--color-green-blue) / 0.5); border-color: rgb(var(--color-green) / 0.3); }
+.half.jev  { background: rgb(var(--color-primary-light) / 0.22); border-color: rgb(var(--color-primary) / 0.3); }
+.half h3 {
+  margin: 0 0 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.09em;
+  display: flex; align-items: center; gap: 5px;
+}
+.half.code h3 { color: rgb(var(--color-green)); }
+.half.jev  h3 { color: rgb(var(--color-primary)); }
+.half p { margin: 0; font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
+.half b { color: var(--ink); }
+
+/* ── map ────────────────────────────────────────────────────────────────────────────────── */
+
+.mapwrap { position: relative; }
+#map { width: 100%; height: 100%; min-height: 60vh; background: rgb(var(--color-green-blue) / 0.3); }
+
+.routebar {
+  position: absolute; left: 14px; top: 14px; z-index: 2;
+  background: var(--card); border: 2px solid var(--edge); border-radius: 999px;
+  padding: 8px 15px; font-size: 12.5px; font-weight: 600; color: var(--ink);
+  box-shadow: 0 4px 14px rgb(var(--color-secondary) / 0.13);
+  /* the right-hand 62px belongs to the zoom buttons */
+  display: flex; align-items: center; gap: 9px; max-width: calc(100% - 76px);
+}
+.routebar .dot { width: 8px; height: 8px; border-radius: 50%; background: rgb(var(--color-primary)); flex: none; }
+.routebar .clear {
+  background: none; border: 0; padding: 0 0 0 4px; color: rgb(var(--color-primary));
+  font-weight: 800; cursor: pointer; box-shadow: none; font-size: 15px;
+}
+.routebar .clear:hover { transform: none; box-shadow: none; }
+
+/* ── odds and ends ──────────────────────────────────────────────────────────────────────── */
+
+.meta {
+  font-size: 12px; color: var(--ink-soft); background: rgb(var(--color-beige) / 0.45);
+  border-radius: var(--radius); padding: 11px 14px; margin-top: 14px;
+}
+.meta b { color: var(--ink); }
+.attrib { font-size: 10.5px; color: var(--ink-faint); margin-top: 12px; line-height: 1.7; }
+.err {
+  color: rgb(var(--color-primary)); font-size: 13px; font-weight: 600;
+  background: rgb(var(--color-primary) / 0.1); padding: 11px 13px; border-radius: var(--radius);
+}
+.empty { font-size: 14px; color: var(--ink-soft); text-align: center; padding: 26px 16px;
+  background: rgb(var(--color-beige) / 0.4); border-radius: var(--radius); }
+
+/* MapLibre popups, restyled to match rather than sitting there in default blue-grey. */
+.maplibregl-popup-content {
+  border-radius: 12px !important; padding: 11px 13px !important;
+  font: 13px/1.5 ui-rounded, "SF Pro Rounded", ui-sans-serif, system-ui, sans-serif !important;
+  color: rgb(var(--color-secondary)) !important;
+  box-shadow: 0 6px 20px rgb(var(--color-secondary) / 0.2) !important;
+}
+.maplibregl-popup-content strong { font-size: 14px; }
+
+/* The zoom buttons are MapLibre's, so they don't get the app's pressable-button shadow. */
+.maplibregl-ctrl-group button,
+.maplibregl-ctrl-group button:hover:not(:disabled),
+.maplibregl-ctrl-group button:active:not(:disabled) { box-shadow: none; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark { animation: none; }
+  .stop:hover { transform: none; }
+  button:hover:not(:disabled), button:active:not(:disabled) { transform: none; }
+}
+
+/*
+ * Map pins.
+ *
+ * `.pin` is the element MapLibre owns: it rewrites `transform: translate(...)` on it every frame
+ * while the map moves, so it must never carry a transform or a transition of its own. A
+ * `transition: transform` here makes every pin animate its own repositioning, and the whole set
+ * drags visibly behind the map as you pan. All of our animation lives on `.pin-art` instead.
+ */
+.pin { line-height: 0; }
+.pin-art {
+  transform-origin: 50% 100%;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+.pin:hover .pin-art { transform: scale(1.12) translateY(-2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-art { transition: none; }
+  .pin:hover .pin-art { transform: none; }
+}
+
+/* ── the answer ─────────────────────────────────────────────────────────────────────────────
+ *
+ * One line of context, then one hero card, then the rest compressed. The weight difference is the
+ * message: a page where eight options look equally important makes the reader redo the ranking.
+ */
+
+
+.hero {
+  background: var(--card);
+  border: 2px solid rgb(var(--color-green-light));
+  border-radius: 18px;
+  padding: 18px 19px 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgb(var(--color-green-light) / 0.35), 0 10px 26px rgb(var(--color-secondary) / 0.1);
+  transition: transform 0.12s;
+}
+.hero:hover { transform: translateY(-2px); }
+.hero.acceptable { border-color: rgb(var(--color-green)); box-shadow: 0 3px 0 rgb(var(--color-green) / 0.3), 0 10px 26px rgb(var(--color-secondary) / 0.1); }
+.hero.active { border-color: rgb(var(--color-code-inline-blue)); }
+
+.hero .badge {
+  display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 4px 10px; border-radius: 99px;
+  background: rgb(var(--color-green-light)); color: rgb(var(--color-secondary));
+}
+.hero.acceptable .badge { background: rgb(var(--color-green)); color: #fff; }
+.hero h2 { font-size: 22px; margin: 9px 0 0; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+.hero .why { font-size: 15px; margin: 7px 0 0; color: var(--ink); font-weight: 500; }
+
+.quote {
+  font-size: 13px; color: var(--ink-soft); margin: 11px 0 0; padding: 9px 12px;
+  background: rgb(var(--color-beige) / 0.45); border-radius: 10px;
+  border-left: 3px solid rgb(var(--color-primary) / 0.55); font-style: italic; line-height: 1.5;
+}
+
+.facts {
+  font-size: 12px; color: var(--ink-soft); margin: 12px 0 0;
+  font-variant-numeric: tabular-nums; display: flex; flex-wrap: wrap; gap: 6px;
+}
+.chip { background: rgb(var(--color-beige) / 0.6); border-radius: 7px; padding: 3px 8px; font-weight: 600; }
+.chip.kw { background: rgb(var(--color-green-blue) / 0.9); }
+.chip.free { background: rgb(var(--color-green-light) / 0.4); }
+
+.who { font-size: 11px; color: var(--ink-faint); margin: 10px 0 0; }
+.tap { font-size: 11.5px; color: rgb(var(--color-green)); margin: 9px 0 0; font-weight: 700; }
+
+/* ── the alternatives ───────────────────────────────────────────────────────────────────── */
+
+.section {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800;
+  color: var(--ink-faint); margin: 0 0 9px;
+}
+
+.rest { list-style: none; margin: 0 0 18px; padding: 0; }
+.rest li {
+  display: grid; grid-template-columns: 9px 1fr auto; gap: 11px; align-items: center;
+  padding: 10px 12px; border-radius: 11px; cursor: pointer;
+  border: 1.5px solid transparent; transition: background 0.12s, border-color 0.12s;
+}
+.rest li:hover { background: rgb(var(--color-beige) / 0.4); }
+.rest li.active { border-color: rgb(var(--color-code-inline-blue)); background: rgb(var(--color-beige) / 0.4); }
+.rest li.ruled_out { opacity: 0.6; }
+.rest li.ruled_out:hover { opacity: 1; }
+
+.tick { width: 9px; height: 9px; border-radius: 50%; }
+.acceptable  .tick { background: rgb(var(--color-green)); }
+.unknown     .tick { background: rgb(var(--color-gray-secondary)); }
+.warned      .tick { background: rgb(var(--color-primary-light)); }
+.ruled_out   .tick { background: rgb(var(--color-primary)); }
+
+.rest .name { font-size: 13.5px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+.rest .tag {
+  font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+  margin-left: 7px; color: var(--ink-faint); vertical-align: 1px; white-space: nowrap;
+}
+.rest .mini { font-size: 12px; color: var(--ink-soft); margin: 2px 0 0; line-height: 1.4; }
+.rest .kwx { font-size: 11.5px; font-weight: 700; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+/* ── how this worked, collapsed ─────────────────────────────────────────────────────────── */
+
+.how { margin-top: 4px; }
+.how summary {
+  cursor: pointer; font-size: 12px; font-weight: 700; color: rgb(var(--color-code-inline-blue));
+  padding: 9px 0; list-style: none;
+}
+.how summary::-webkit-details-marker { display: none; }
+.how summary::before { content: "\25b8 "; }
+.how[open] summary::before { content: "\25be "; }
+.howgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 12px; }
+.half { border-radius: var(--radius); padding: 12px 14px; border: 2px solid transparent; }
+.half.code { background: rgb(var(--color-green-blue) / 0.5); border-color: rgb(var(--color-green) / 0.3); }
+.half.jev  { background: rgb(var(--color-primary-light) / 0.22); border-color: rgb(var(--color-primary) / 0.3); }
+.half h4 {
+  margin: 0 0 5px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.09em; font-weight: 800;
+}
+.half.code h4 { color: rgb(var(--color-green)); }
+.half.jev  h4 { color: rgb(var(--color-primary)); }
+.half p { margin: 0; font-size: 12px; color: var(--ink-soft); line-height: 1.55; }
+.half b { color: var(--ink); }
+
+/* Pins for chargers that are not the answer: present, clickable, quiet. */
+.pin-dim .pin-art { opacity: 0.72; }
+.pin-dim:hover .pin-art { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero:hover { transform: none; }
+}
+
+/* A caveat that matters, in the palette's warning colour rather than hidden in grey provenance. */
+.caveat {
+  font-size: 12.5px; font-weight: 600; margin: 11px 0 0; padding: 8px 11px;
+  color: rgb(var(--color-secondary));
+  background: rgb(var(--color-primary) / 0.11);
+  border-radius: 10px; line-height: 1.45;
+}
+.stalebit { color: rgb(var(--color-primary)); font-weight: 700; white-space: nowrap; }
+
+/* The map's own ground, so the panel behind the tiles matches them while they load. */
+#map { background: rgb(var(--color-beige-light)); }
+
+/* The selected stop, in the compact list. It is the one the drawn route goes through. */
+.rest li.active .name::after {
+  content: " \2713";
+  color: rgb(var(--color-code-inline-blue));
+  font-weight: 800;
+}
+.rest li.active { background: rgb(var(--color-green-blue) / 0.35); }
+
+/* ── the request banner ─────────────────────────────────────────────────────────────────────
+ *
+ * A reader looking at a result should be able to tell what question produced it without reading a
+ * paragraph first. Each priority gets its own tint, so five screenshots of the same journey are
+ * distinguishable at a glance — which is what the article needs them to be.
+ */
+
+.request {
+  border-radius: var(--radius);
+  padding: 12px 15px;
+  margin: 0 0 16px;
+  border: 2px solid transparent;
+  background: rgb(var(--color-beige) / 0.45);
+}
+.rlabel {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.rbody { margin: 0; font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
+.rbody b { color: var(--ink); font-weight: 700; }
+
+.r-safety      { background: rgb(var(--color-code-inline-blue) / 0.1); border-color: rgb(var(--color-code-inline-blue) / 0.35); }
+.r-safety      .rlabel { color: rgb(var(--color-code-inline-blue)); }
+.r-cost        { background: rgb(var(--color-green-light) / 0.16); border-color: rgb(var(--color-green-light) / 0.5); }
+.r-cost        .rlabel { color: rgb(var(--color-green)); }
+.r-speed       { background: rgb(var(--color-primary) / 0.1); border-color: rgb(var(--color-primary) / 0.35); }
+.r-speed       .rlabel { color: rgb(var(--color-primary)); }
+.r-amenities   { background: rgb(var(--color-beige) / 0.7); border-color: rgb(var(--color-beige-gray) / 0.5); }
+.r-amenities   .rlabel { color: rgb(var(--color-gray)); }
+.r-reliability { background: rgb(var(--color-green-blue) / 0.5); border-color: rgb(var(--color-green) / 0.4); }
+.r-reliability .rlabel { color: rgb(var(--color-green)); }
+.r-none        .rlabel { color: var(--ink-faint); }
+
+/* ── who chose the winner ───────────────────────────────────────────────────────────────────
+ *
+ * The single claim this project is making, on screen. Code filters, refuses, and phrases its numbers
+ * as words. Jev chooses. There is no path where code picks the winner.
+ */
+
+.herohead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.chose {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 99px;
+  border: 1.5px solid currentColor;
+}
+.chose.model { color: rgb(var(--color-primary)); }
